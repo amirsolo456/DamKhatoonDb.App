@@ -48,3 +48,6 @@ ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Products_Type]
 GO
 
 
+GO
+
+

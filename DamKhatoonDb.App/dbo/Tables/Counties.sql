@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Counties] (
-    [Id]       INT            NOT NULL,
-    [Name]     NVARCHAR (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [OstanId]  INT            NOT NULL,
-    [AmarCode] INT            NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
+﻿CREATE TABLE [dbo].[Counties](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[OstanId] [int] NOT NULL,
+	[AmarCode] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]

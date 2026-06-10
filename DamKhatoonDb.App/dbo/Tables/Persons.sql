@@ -1,26 +1,28 @@
-﻿CREATE TABLE [dbo].[Persons] (
-    [Id]                 INT            IDENTITY (1, 1) NOT NULL,
-    [PersonType]         NVARCHAR (20)  NOT NULL,
-    [FirstName]          NVARCHAR (100) NULL,
-    [LastName]           NVARCHAR (100) NULL,
-    [CompanyName]        NVARCHAR (200) NULL,
-    [NationalId]         NVARCHAR (20)  NULL,
-    [EconomicCode]       NVARCHAR (20)  NULL,
-    [RegistrationNumber] NVARCHAR (20)  NULL,
-    [Phone]              NVARCHAR (20)  NULL,
-    [Mobile]             NVARCHAR (20)  NULL,
-    [Email]              NVARCHAR (100) NULL,
-    [Address]            NVARCHAR (500) NULL,
-    [PostalCode]         NVARCHAR (20)  NULL,
-    [City]               NVARCHAR (100) NULL,
-    [Province]           NVARCHAR (100) NULL,
-    [IsActive]           BIT            DEFAULT ((1)) NOT NULL,
-    [Notes]              NVARCHAR (MAX) NULL,
-    [CreatedAt]          DATETIME       DEFAULT (getutcdate()) NOT NULL,
-    [UpdatedAt]          DATETIME       DEFAULT (getutcdate()) NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC),
-    CHECK ([PersonType]='Legal' OR [PersonType]='Natural')
-);
+﻿CREATE TABLE [dbo].[Persons](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PersonType] [nvarchar](20) NOT NULL,
+	[FirstName] [nvarchar](100) NULL,
+	[LastName] [nvarchar](100) NULL,
+	[CompanyName] [nvarchar](200) NULL,
+	[NationalId] [nvarchar](20) NULL,
+	[EconomicCode] [nvarchar](20) NULL,
+	[RegistrationNumber] [nvarchar](20) NULL,
+	[Phone] [nvarchar](20) NULL,
+	[Mobile] [nvarchar](20) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Address] [nvarchar](500) NULL,
+	[PostalCode] [nvarchar](20) NULL,
+	[City] [nvarchar](100) NULL,
+	[Province] [nvarchar](100) NULL,
+	[IsActive] [bit] NOT NULL,
+	[Notes] [nvarchar](max) NULL,
+	[CreatedAt] [datetime] NOT NULL,
+	[UpdatedAt] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 
 GO
@@ -57,3 +59,12 @@ GO
 CREATE NONCLUSTERED INDEX [IX_Persons_IsActive]
     ON [dbo].[Persons]([IsActive] ASC);
 
+
+GO
+ALTER TABLE [dbo].[Persons] ADD  DEFAULT ((1)) FOR [IsActive]
+GO
+ALTER TABLE [dbo].[Persons] ADD  DEFAULT (getutcdate()) FOR [CreatedAt]
+GO
+ALTER TABLE [dbo].[Persons] ADD  DEFAULT (getutcdate()) FOR [UpdatedAt]
+GO
+ALTER TABLE [dbo].[Persons]  WITH CHECK ADD CHECK  (([PersonType]='Legal' OR [PersonType]='Natural'))

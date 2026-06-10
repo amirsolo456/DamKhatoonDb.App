@@ -1,11 +1,15 @@
-﻿CREATE TABLE [dbo].[City] (
-    [Id]         INT            NOT NULL,
-    [Name]       NVARCHAR (100) NULL,
-    [CityType]   INT            CONSTRAINT [DF__City__CityType__55009F39] DEFAULT ((0)) NOT NULL,
-    [ProvinceId] INT            NULL,
-    [CountyId]   INT            NULL,
-    [DistrictId] INT            NULL,
-    [AmarCode]   NVARCHAR (50)  NULL,
-    CONSTRAINT [PK__City__3214EC07BC7E8948] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
+﻿CREATE TABLE [dbo].[City](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[CityType] [int] NOT NULL,
+	[ProvinceId] [int] NULL,
+	[CountyId] [int] NULL,
+	[DistrictId] [int] NULL,
+	[AmarCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK__City__3214EC07BC7E8948] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[City] ADD  CONSTRAINT [DF__City__CityType__55009F39]  DEFAULT ((0)) FOR [CityType]

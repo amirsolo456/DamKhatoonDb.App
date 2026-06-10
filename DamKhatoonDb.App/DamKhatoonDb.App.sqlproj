@@ -64,6 +64,8 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="Security\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Snapshots" />
+    <Folder Include="Import Script Logs" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Villages.sql" />
@@ -83,5 +85,10 @@
     <Build Include="dbo\Tables\dbo.Products.sql" />
     <Build Include="dbo\Tables\dbo.Products_Type.sql" />
     <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+    <Build Include="DamKhatoonDb.Tables.sql" />
+    <Build Include="DamKhatoonDb.Database.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Snapshots\DamKhatoonDb.App_20260610_05-45-54.dacpac" />
   </ItemGroup>
 </Project>
