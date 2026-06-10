@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DamKhatoonDb.App/DamKhatoonDb.App.sqlproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
