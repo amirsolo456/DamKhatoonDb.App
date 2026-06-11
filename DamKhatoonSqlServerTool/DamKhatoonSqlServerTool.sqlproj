@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>DamKhatoonDb.App</Name>
+    <Name>DamKhatoonSqlServerTool</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{36f7c4e2-8511-449d-82fe-03acfebd477e}</ProjectGuid>
+    <ProjectGuid>{bfd96549-d9c3-492c-9b33-9b213f2ad20f}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>DamKhatoonDb.App</RootNamespace>
-    <AssemblyName>DamKhatoonDb.App</AssemblyName>
-    <ModelCollation>1065,CS</ModelCollation>
+    <RootNamespace>DamKhatoonSqlServerTool</RootNamespace>
+    <AssemblyName>DamKhatoonSqlServerTool</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,10 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DefaultCollation>Persian_100_CS_AI</DefaultCollation>
-    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
-    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
-    <GenerateCreateScript>True</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -60,37 +56,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-    <Folder Include="Security\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Snapshots" />
-    <Folder Include="Import Script Logs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="dbo\Tables\Villages.sql" />
-    <Build Include="dbo\Tables\PaymentAllocations.sql" />
-    <Build Include="dbo\Tables\RuralDistricts.sql" />
-    <Build Include="dbo\Tables\Payments.sql" />
-    <Build Include="dbo\Tables\Users.sql" />
-    <Build Include="dbo\Tables\InvoiceLines.sql" />
-    <Build Include="dbo\Tables\Invoices.sql" />
-    <Build Include="dbo\Tables\Counties.sql" />
-    <Build Include="dbo\Tables\Districts.sql" />
-    <Build Include="dbo\Tables\Employees.sql" />
-    <Build Include="dbo\Tables\City.sql" />
-    <Build Include="dbo\Tables\Provinces.sql" />
-    <Build Include="dbo\Tables\Persons.sql" />
-    <Build Include="Security\Permissions.sql" />
-    <Build Include="dbo\Tables\Products.sql" />
-    <Build Include="dbo\Tables\Products_Type.sql" />
-    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
-    <Build Include="DamKhatoonDb.Tables.sql" />
-    <Build Include="DamKhatoonDb.Database.sql" />
-    <Build Include="DamKhatoonDbSchema.sql" />
-    <Build Include="Scripts\userSatr1Query.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Snapshots\DamKhatoonDb.App_20260610_05-45-54.dacpac" />
   </ItemGroup>
 </Project>

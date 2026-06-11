@@ -1,4 +1,14 @@
-﻿CREATE TABLE [dbo].[Persons](
+﻿USE [DamKhatoonDb]
+GO
+
+/****** Object:  Table [dbo].[Persons]    Script Date: 6/10/2026 8:14:31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Persons](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[PersonType] [nvarchar](20) NOT NULL,
 	[FirstName] [nvarchar](100) NULL,
@@ -23,48 +33,18 @@ PRIMARY KEY CLUSTERED
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
 GO
-CREATE NONCLUSTERED INDEX [IX_Persons_PersonType]
-    ON [dbo].[Persons]([PersonType] ASC);
 
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_FirstName_LastName]
-    ON [dbo].[Persons]([FirstName] ASC, [LastName] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_CompanyName]
-    ON [dbo].[Persons]([CompanyName] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_NationalId]
-    ON [dbo].[Persons]([NationalId] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_Mobile]
-    ON [dbo].[Persons]([Mobile] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_Email]
-    ON [dbo].[Persons]([Email] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Persons_IsActive]
-    ON [dbo].[Persons]([IsActive] ASC);
-
-
-GO
 ALTER TABLE [dbo].[Persons] ADD  DEFAULT ((1)) FOR [IsActive]
 GO
+
 ALTER TABLE [dbo].[Persons] ADD  DEFAULT (getutcdate()) FOR [CreatedAt]
 GO
+
 ALTER TABLE [dbo].[Persons] ADD  DEFAULT (getutcdate()) FOR [UpdatedAt]
 GO
+
 ALTER TABLE [dbo].[Persons]  WITH CHECK ADD CHECK  (([PersonType]='Legal' OR [PersonType]='Natural'))
+GO
+
+

@@ -1,4 +1,14 @@
-﻿CREATE TABLE [dbo].[InvoiceLines](
+﻿USE [DamKhatoonDb]
+GO
+
+/****** Object:  Table [dbo].[InvoiceLines]    Script Date: 6/10/2026 8:11:50 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[InvoiceLines](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[InvoiceId] [int] NOT NULL,
 	[ProductId] [int] NULL,
@@ -16,54 +26,6 @@ PRIMARY KEY CLUSTERED
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-
-
 GO
-CREATE NONCLUSTERED INDEX [IX_InvoiceLines_InvoiceId]
-    ON [dbo].[InvoiceLines]([InvoiceId] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_InvoiceLines_ProductId]
-    ON [dbo].[InvoiceLines]([ProductId] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_InvoiceLines_PersonId]
-    ON [dbo].[InvoiceLines]([PersonId] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_InvoiceLines_SellerEmployeeId]
-    ON [dbo].[InvoiceLines]([SellerEmployeeId] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_InvoiceLines_IsDeleted]
-    ON [dbo].[InvoiceLines]([IsDeleted] ASC);
-
-
-GO
-ALTER TABLE [dbo].[InvoiceLines]  WITH CHECK ADD  CONSTRAINT [FK_InvoiceLines_Persons] FOREIGN KEY([Id])
-REFERENCES [dbo].[Persons] ([Id])
-GO
-
-ALTER TABLE [dbo].[InvoiceLines] CHECK CONSTRAINT [FK_InvoiceLines_Persons]
-GO
-ALTER TABLE [dbo].[InvoiceLines]  WITH CHECK ADD  CONSTRAINT [FK_InvoiceLines_Invoices] FOREIGN KEY([Id])
-REFERENCES [dbo].[Invoices] ([Id])
-GO
-
-ALTER TABLE [dbo].[InvoiceLines] CHECK CONSTRAINT [FK_InvoiceLines_Invoices]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT ((1)) FOR [Quantity]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT ((0)) FOR [UnitPrice]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT ((0)) FOR [LineTotal]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT ((0)) FOR [IsDeleted]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT (getdate()) FOR [CreatedAt]
-GO
-ALTER TABLE [dbo].[InvoiceLines] ADD  DEFAULT (getdate()) FOR [UpdatedAt]
+ALTER TABLE [dbo].[InvoiceLines] ADD CONSTRAINT [FK_InvoiceLines_Persons] FOREIGN KEY([PersonId]) REFERENCES [dbo].[Persons]([Id]);
+ALTER TABLE [dbo].[InvoiceLines] ADD CONSTRAINT [FK_InvoiceLines_Invoices] FOREIGN KEY([InvoiceId]) REFERENCES [dbo].[Invoices]([Id]);

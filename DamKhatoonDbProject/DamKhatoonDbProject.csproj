@@ -1,0 +1,104 @@
+﻿<Project Sdk="MSBuild.Sdk.SqlProj/4.1.1">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <SqlServerVersion>Sql160</SqlServerVersion>
+        <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+        <GenerateEntityRelationshipDiagram>True</GenerateEntityRelationshipDiagram>
+    <CodeAnalysisRules></CodeAnalysisRules>
+        <!-- For additional properties that can be set here, please refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#model-properties -->
+    </PropertyGroup>
+    <ItemGroup>
+      <Content Remove="bin\**" />
+      <None Remove="bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- These packages adds additional code analysis rules -->
+        <!-- We recommend using these, but they can be removed if desired -->
+        <PackageReference Include="EntityFramework" Version="6.5.2" />
+        <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="3.2.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="3.0.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    </ItemGroup>
+
+    <PropertyGroup><!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
+    
+      <AcceleratedDatabaseRecovery>False</AcceleratedDatabaseRecovery>
+      <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+      <AnsiNullDefaultOn>False</AnsiNullDefaultOn>
+      <AnsiNullsOn>False</AnsiNullsOn>
+      <AnsiPaddingOn>False</AnsiPaddingOn>
+      <AnsiWarningsOn>False</AnsiWarningsOn>
+      <ArithAbortOn>False</ArithAbortOn>
+      <AutoClose>False</AutoClose>
+      <AutoCreateStatistics>True</AutoCreateStatistics>
+      <AutoCreateStatisticsIncremental>False</AutoCreateStatisticsIncremental>
+      <AutoShrink>False</AutoShrink>
+      <AutoUpdateStatistics>True</AutoUpdateStatistics>
+      <AutoUpdateStatisticsAsync>False</AutoUpdateStatisticsAsync>
+      <AutomaticIndexCompaction>False</AutomaticIndexCompaction>
+      <ChangeTrackingAutoCleanup>True</ChangeTrackingAutoCleanup>
+      <ChangeTrackingEnabled>False</ChangeTrackingEnabled>
+      <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+      <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+      <Collation>Persian_100_CS_AI</Collation>
+      <CompatibilityLevel>170</CompatibilityLevel>
+      <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+      <Containment>None</Containment>
+      <CursorCloseOnCommit>False</CursorCloseOnCommit>
+      <CursorDefaultGlobalScope>True</CursorDefaultGlobalScope>
+      <DBChainingOn>False</DBChainingOn>
+      <DataRetentionEnabled>False</DataRetentionEnabled>
+      <DatabaseStateOffline>False</DatabaseStateOffline>
+      <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+      <DbScopedConfigLegacyCardinalityEstimation>False</DbScopedConfigLegacyCardinalityEstimation>
+      <DbScopedConfigMaxDOP>0</DbScopedConfigMaxDOP>
+      <DbScopedConfigParameterSniffing>True</DbScopedConfigParameterSniffing>
+      <DbScopedConfigQueryOptimizerHotfixes>False</DbScopedConfigQueryOptimizerHotfixes>
+      <DelayedDurabilityMode>Disabled</DelayedDurabilityMode>
+      <EngineVersion>Default</EngineVersion>
+      <FullTextEnabled>True</FullTextEnabled>
+      <HonorBrokerPriority>False</HonorBrokerPriority>
+      <MemoryOptimizedElevateToSnapshot>False</MemoryOptimizedElevateToSnapshot>
+      <NestedTriggersOn>True</NestedTriggersOn>
+      <NonTransactedFileStreamAccess>Off</NonTransactedFileStreamAccess>
+      <NumericRoundAbortOn>False</NumericRoundAbortOn>
+      <OptimizedLocking>False</OptimizedLocking>
+      <PageVerifyMode>Checksum</PageVerifyMode>
+      <ParameterizationOption>Simple</ParameterizationOption>
+      <QueryStoreCaptureMode>Auto</QueryStoreCaptureMode>
+      <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
+      <QueryStoreFlushInterval>900</QueryStoreFlushInterval>
+      <QueryStoreIntervalLength>60</QueryStoreIntervalLength>
+      <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
+      <QueryStoreMaxStorageSize>1000</QueryStoreMaxStorageSize>
+      <QueryStoreStaleQueryThreshold>30</QueryStoreStaleQueryThreshold>
+      <QuotedIdentifierOn>False</QuotedIdentifierOn>
+      <ReadOnly>False</ReadOnly>
+      <RecoveryMode>Simple</RecoveryMode>
+      <RecursiveTriggersOn>False</RecursiveTriggersOn>
+      <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+      <StorageType>Memory</StorageType>
+      <SupplementalLoggingOn>False</SupplementalLoggingOn>
+      <TargetRecoveryTimePeriod>60</TargetRecoveryTimePeriod>
+      <TargetRecoveryTimeUnit>Seconds</TargetRecoveryTimeUnit>
+      <TornPageProtectionOn>False</TornPageProtectionOn>
+      <TransactionIsolationReadCommittedSnapshot>False</TransactionIsolationReadCommittedSnapshot>
+      <TransformNoiseWords>False</TransformNoiseWords>
+      <Trustworthy>False</Trustworthy>
+      <TwoDigitYearCutoff>2049</TwoDigitYearCutoff>
+      <UserAccessOption>Multiple</UserAccessOption>
+      <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+      <WithEncryption>False</WithEncryption>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PostDeploy Include="Post-Deployment/Script.PostDeployment.sql" />
+  </ItemGroup>
+</Project>

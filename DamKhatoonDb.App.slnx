@@ -1,6 +1,7 @@
 <Solution>
-  <Project Path="DamKhatoonDb.App/DamKhatoonDb.App.sqlproj">
+  <Project Path="DamKhatoonDb.App/DamKhatoonDb.App.sqlproj" Id="36f7c4e2-8511-449d-82fe-03acfebd477e">
     <Build />
     <Deploy />
   </Project>
+  <Project Path="DamKhatoonDbProject/DamKhatoonDbProject.csproj" Id="d876e5b4-6c2a-45c5-8c86-05bc9c569d95" />
 </Solution>
